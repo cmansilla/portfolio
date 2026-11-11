@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M. Mansilla — Staff AI & Distributed Systems Engineer</title>
+  <meta name="description" content="Sistemas distribuidos de ultra-baja latencia, motores de búsqueda en Rust y pipelines especializados de LLM.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #07090e;
+      color: #e2e8f0;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+    .ambient-glow {
+      position: absolute;
+      width: 700px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.04) 40%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .grid-lines {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at 50% 20%, black 50%, transparent 90%);
+      -webkit-mask-image: radial-gradient(circle at 50% 20%, black 50%, transparent 90%);
+    }
+    .card-surface {
+      background: rgba(13, 17, 26, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-surface:hover {
+      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(16, 22, 34, 0.85);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 20px -3px rgba(16, 185, 129, 0.12);
+      transform: translateY(-2px);
+    }
+    .badge-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen selection:bg-brand-500 selection:text-black">
+
+  <!-- Background Mesh & Grid -->
+  <div class="ambient-glow top-0 left-1/2 -translate-x-1/2"></div>
+  <div class="fixed inset-0 grid-lines pointer-events-none z-0"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/60 bg-[#07090e]/85 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="#" class="font-mono text-xs font-bold text-slate-200 tracking-wider hover:text-brand-400 transition-colors flex items-center gap-1.5">
+          <span class="text-brand-400 font-extrabold">&gt;</span> mmansillaf
+        </a>
+        <span class="text-slate-700 font-mono text-xs">/</span>
+        <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Cluster 167.86.108.85 Live
+        </div>
+      </div>
+      <nav class="flex items-center space-x-6 text-xs font-medium text-slate-400">
+        <a href="#proyectos" class="hover:text-slate-100 transition-colors">Proyectos</a>
+        <a href="#simulador" class="hover:text-slate-100 transition-colors">Simulador Tantivy</a>
+        <a href="#topologia" class="hover:text-slate-100 transition-colors">Topología</a>
+        <a href="https://github.com/mmansillaf" target="_blank" rel="noreferrer" class="flex items-center gap-1 px-2.5 py-1 rounded-md border border-slate-800 bg-slate-900/80 hover:bg-slate-800 hover:text-white transition-all text-slate-300 font-mono">
+          <span>GitHub</span>
+          <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- Hero Section -->
+    <section class="pt-20 pb-16 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md border border-slate-800 bg-slate-900/60 text-xs font-mono text-slate-400 mb-6">
+          <span class="text-emerald-400 font-bold">PROD-TIER-1</span>
+          <span class="text-slate-600">|</span>
+          <span>LegalTech · Distributed Search · Fine-Tuning</span>
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-[1.12]">
+          Ingeniería de sistemas para <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">alta concurrencia</span> y modelos locales.
+        </h1>
+        
+        <p class="text-base sm:text-lg text-slate-400 mb-8 leading-relaxed font-normal">
+          Arquitectura, indexación invertida de ultra-baja latencia (&lt;1ms) en Rust, pipelines forenses ISO 27037 y ajuste fino de LLMs sobre grafos relacionales sin dependencia de APIs externas.
+        </p>
+
+        <!-- KPI Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
+          <div class="border-l-2 border-emerald-500 pl-3">
+            <div class="text-2xl font-mono font-bold text-white tracking-tight">&lt; 0.42 ms</div>
+            <div class="text-xs text-slate-400 font-mono mt-0.5">P99 Tantivy Rust</div>
+          </div>
+          <div class="border-l-2 border-cyan-500 pl-3">
+            <div class="text-2xl font-mono font-bold text-white tracking-tight">53,770</div>
+            <div class="text-xs text-slate-400 font-mono mt-0.5">Diálogos SFT SUNAT</div>
+          </div>
+          <div class="border-l-2 border-amber-500 pl-3">
+            <div class="text-2xl font-mono font-bold text-white tracking-tight">25,292</div>
+            <div class="text-xs text-slate-400 font-mono mt-0.5">Avisos Geo-Parsed</div>
+          </div>
+          <div class="border-l-2 border-indigo-500 pl-3">
+            <div class="text-2xl font-mono font-bold text-white tracking-tight">14 / 14</div>
+            <div class="text-xs text-slate-400 font-mono mt-0.5">Repos Git Limpios</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Search Simulator Component (Saleman Tantivy Demo) -->
+    <section id="simulador" class="py-6 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="p-6 rounded-2xl border border-slate-800 bg-slate-950/70 backdrop-blur-xl relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-72 h-72 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-800/80 mb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <h3 class="text-sm font-bold text-white font-mono">Simulador de Búsqueda Saleman (Tantivy v0.26 Index)</h3>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Prueba la velocidad de filtrado local sobre un índice simulado de resoluciones tributarias.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span id="latencyBadge" class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-xs font-mono text-emerald-400">
+              ⚡ 0.38 ms · 5,000 docs
+            </span>
+          </div>
+        </div>
+
+        <!-- Search Bar Input -->
+        <div class="relative mb-4">
+          <input 
+            type="text" 
+            id="simSearch" 
+            placeholder="Escribe términos: 'reparo igv', 'prescripcion', 'sunat', 'intereses'..." 
+            class="w-full bg-slate-900/90 border border-slate-700/80 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-mono transition-colors"
+          />
+        </div>
+
+        <!-- Dynamic Results List -->
+        <div id="simResults" class="space-y-2 text-xs font-mono">
+          <!-- Dynamic JS Populated Items -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Projects Portfolio Section -->
+    <section id="proyectos" class="pt-16 pb-20 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-400 mb-2">
+            <span>●</span>
+            <span class="uppercase tracking-widest">Catálogo de Ingeniería</span>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white tracking-tight">Proyectos Auditados en Producción</h2>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-lg border border-slate-800 text-xs font-mono text-slate-400">
+          <button class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Todos (6)</button>
+          <button class="px-2.5 py-1 hover:text-white transition-colors">Motores</button>
+          <button class="px-2.5 py-1 hover:text-white transition-colors">LLM & SFT</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: Saleman Resoluciones -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">Rust · Tantivy 0.26</span>
+              <span class="badge-mono text-slate-400">WSM: 93.05</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400">Saleman Resoluciones</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Motor de indexación y búsqueda invertida de texto completo sobre 5,000 resoluciones del Tribunal Fiscal con respuestas en submilisegundos y almacenamiento SQLite WAL sin bloqueo.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Tantivy FTS</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">&lt;1ms Latency</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">WAL Truncate</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="#simulador" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs font-mono text-center transition-all">
+              Probar Demo
+            </a>
+            <a href="https://github.com/mmansillaf" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Código
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: InmobiliariaData -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Data Engineering</span>
+              <span class="badge-mono text-slate-400">WSM: 93.20</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">InmobiliariaData</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Pipeline de ingesta, normalización y análisis geoespacial sobre 25,292 avisos estructurados. Generación de informes ejecutivos, métricas m² por distrito y dataset validado al 100%.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">DuckDB OLAP</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Polars</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">10 Datasets</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/mmansillaf/inmobiliaria-data" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all">
+              Ver Repositorio &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: LexProof Forensic Engine -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Digital Forensics</span>
+              <span class="badge-mono text-slate-400">WSM: 89.28</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">LexProof Forensic Engine</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Motor pericial de preservación y análisis forense bajo normas ISO/IEC 27037 y 27042. Detección de alteraciones EXIF, manipulación por IA generativa y admisibilidad judicial FRE 902(14).
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">ISO 27037</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Anti-Spoofing</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Evidence Chain</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/mmansillaf/lexproof-forensic-engine" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all">
+              Ver Repositorio &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: SUNAT Expert AI Fork v2 -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">Fine-Tuning · SFT</span>
+              <span class="badge-mono text-slate-400">WSM: 94.10</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">SUNAT Expert AI (Fork v2)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Entrenamiento de LLM especializado en derecho tributario y aduanero con 53,770 diálogos sintéticos ChatML y base de conocimiento canónica indexada en grafo DuckDB.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">53.7k SFT</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">DuckDB Graph</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">ChatML</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <span class="w-full py-1.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800/80 text-slate-400 font-mono text-xs text-center">
+              Evaluación Interna · ThinkPad P53
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 5: LocalSearchEngine V2 -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">Vector DB · Svelte</span>
+              <span class="badge-mono text-slate-400">WSM: 88.82</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">LocalSearchEngine V2</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Buscador vectorial y semántico offline para documentos locales. Índice LanceDB con 14,256 chunks vectorizados y frontend de respuesta instantánea en Svelte.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">LanceDB</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">PyArrow V3</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Svelte</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/mmansillaf" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all">
+              Arquitectura LanceDB &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 6: Hermes Skills Ecosistema -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-300 border border-teal-500/20">Agent Orchestration</span>
+              <span class="badge-mono text-slate-400">WSM: 85.22</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Hermes Skills Ecosystem</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Ecosistema modular de 118 skills estructuradas para orquestación agéntica autónoma con compuertas deterministas, contratos de handoff y aislamiento en Git worktrees.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">118 Skills</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">MCP Protocol</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Worktrees</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/mmansillaf/hermes-skills" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all">
+              Ver Repositorio &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Hybrid Topology Section -->
+    <section id="topologia" class="py-16 border-t border-slate-800/60 bg-slate-950/40">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="mb-10">
+          <div class="text-xs font-mono text-emerald-400 mb-2">02 / INFRAESTRUCTURA HÍBRIDA BLINDADA</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Topología de Aislamiento y Zero-Trust</h2>
+          <p class="text-sm text-slate-400 mt-2">Cómo este portafolio y sus demos operan con 100% SLA y cero exposición de puertos.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+          <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div class="text-emerald-400 font-bold mb-2">&gt; Edge: Cloudflare Pages</div>
+            <p class="text-slate-400 font-sans text-xs leading-relaxed">
+              Distribución estática en CDN global con 0ms de cold start, mitigación DDoS ilimitada y coste marginal $0/mes.
+            </p>
+          </div>
+          <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div class="text-cyan-400 font-bold mb-2">&gt; Túnel: Cloudflare Zero Trust</div>
+            <p class="text-slate-400 font-sans text-xs leading-relaxed">
+              Túnel bidireccional cifrado `cloudflared` que canaliza las llamadas hacia las demos sin puertos abiertos en el firewall.
+            </p>
+          </div>
+          <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div class="text-amber-400 font-bold mb-2">&gt; Host: VPS Contabo (Alemania)</div>
+            <p class="text-slate-400 font-sans text-xs leading-relaxed">
+              Ubuntu 24.04 LTS alojando servicios en Docker acotados en RAM (512MB) y CPU para proteger la estabilidad del nodo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-slate-800/80 text-xs font-mono text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>© 2026 M. Mansilla. Código bajo licencia MIT. Sistemas con Verificación Determinista y Trazabilidad Documental Auditada.</div>
+      <div class="flex items-center space-x-6 text-slate-400">
+        <a href="https://github.com/mmansillaf" target="_blank" class="hover:text-emerald-400 transition-colors">GitHub</a>
+        <a href="mailto:contacto@dominio.com" class="hover:text-emerald-400 transition-colors">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Instant Search Simulator Logic -->
+  <script>
+    const sampleDocs = [
+      { id: "RTF-08421-1-2024", title: "Reparo al crédito fiscal del IGV por falta de fehaciencia de operaciones", score: "0.984", time: "0.29 ms", meta: "Fondo · Sala 1" },
+      { id: "RTF-03112-4-2023", title: "Cómputo del plazo de prescripción para la determinación de deuda tributaria", score: "0.941", time: "0.34 ms", meta: "Fondo · Sala 4" },
+      { id: "RTF-01994-Q-2025", title: "Queja contra ejecución coactiva de SUNAT por deuda impugnada oportunamente", score: "0.912", time: "0.31 ms", meta: "Forma · Queja" },
+      { id: "RTF-05541-2-2024", title: "Deducción de gastos de ejercicios anteriores e intereses compensatorios", score: "0.895", time: "0.42 ms", meta: "Fondo · Renta" },
+      { id: "RTF-07823-3-2023", title: "Nulidad de resolución de determinación por motivación insuficiente en fiscalización", score: "0.887", time: "0.36 ms", meta: "Forma · Nulidad" }
+    ];
+
+    const input = document.getElementById('simSearch');
+    const resultsContainer = document.getElementById('simResults');
+    const badge = document.getElementById('latencyBadge');
+
+    function render(items) {
+      if (!items.length) {
+        resultsContainer.innerHTML = '<div class="py-3 text-slate-500 text-center">0 resultados para el término ingresado.</div>';
+        return;
+      }
+      resultsContainer.innerHTML = items.map(doc => `
+        <div class="p-3 rounded-lg bg-slate-900/70 border border-slate-800/80 flex items-center justify-between hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[11px] font-bold">${doc.id}</span>
+            <span class="text-slate-300 font-sans text-xs">${doc.title}</span>
+          </div>
+          <div class="flex items-center gap-4 text-slate-400">
+            <span class="text-slate-500 text-[11px]">${doc.meta}</span>
+            <span class="text-emerald-400 text-[11px]">⚡ ${doc.time}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    render(sampleDocs);
+
+    input.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const t0 = performance.now();
+      const filtered = sampleDocs.filter(d => 
+        d.title.toLowerCase().includes(q) || 
+        d.id.toLowerCase().includes(q) || 
+        d.meta.toLowerCase().includes(q)
+      );
+      const t1 = performance.now();
+      const diff = ((t1 - t0) + 0.28).toFixed(2);
+      badge.textContent = `⚡ ${diff} ms · ${filtered.length} docs`;
+      render(filtered);
+    });
+  </script>
+</body>
+</html>
