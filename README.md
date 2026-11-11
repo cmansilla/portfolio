@@ -32,12 +32,15 @@ Este repositorio aloja el código fuente del **Portafolio de Ingeniería y Demos
 
 ## 🚀 Proyectos de Ingeniería y Repositorios Centrales
 
-| Proyecto | Especialidad | Stack Tecnológico | Repositorio / Estado |
+| Proyecto | Especialidad | Stack Tecnológico | Especificación & Arquitectura |
 | :--- | :--- | :--- | :--- |
-| **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [`audit-cpe-app`](https://github.com/mmansillaf/audit-cpe-app) · `v2.1.0` |
-| **Saleman Resoluciones** | Búsqueda jurisprudencial P99 < 0.42ms | Rust (Tantivy), FastAPI, SQLite WAL | [`saleman_resoluciones`](https://github.com/mmansillaf/saleman_resoluciones) |
-| **InmobiliariaData** | Pipeline analítico geoespacial | DuckDB, Polars, PyArrow | [`inmobiliaria-data`](https://github.com/mmansillaf/inmobiliaria-data) · 25k rows |
-| **SUNAT Expert AI** | Modelo de dominio y SFT | ChatML (53.7k diálogos), DuckDB Grafo | *Validación SFT / ThinkPad P53* |
+| **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [Ver Arquitectura Go (`v2.1.0`)](projects/audit-cpe-app.md) |
+| **Saleman Resoluciones** | Búsqueda jurisprudencial P99 < 0.42ms | Rust (Tantivy), FastAPI, SQLite WAL | [Ver Arquitectura Rust/FastAPI](projects/saleman-resoluciones.md) |
+| **InmobiliariaData** | Pipeline analítico geoespacial | DuckDB, Polars, PyArrow | [Ver Arquitectura OLAP](projects/inmobiliaria-data.md) · 25k rows |
+| **SUNAT Expert AI** | Modelo de dominio y SFT | ChatML (53.7k diálogos), DuckDB Grafo | [Ver Arquitectura SFT / Grafo](projects/sunat-expert-ai.md) |
+| **LocalSearchEngine V2** | Búsqueda vectorial offline | LanceDB, Apache Arrow, Svelte | [Ver Arquitectura LanceDB](projects/local-search-engine.md) |
+| **LexProof Forensic** | Cadena de custodia digital | ISO 27037/27042, CAF v3.0, FRE 902 | [Ver Arquitectura Forense](projects/lexproof-forensic-engine.md) |
+| **Hermes Skills** | Orquestación multi-agente | MCP Protocol, Git Worktrees | [Ver Arquitectura Agéntica](projects/hermes-skills.md) · 118 Skills |
 
 ---
 
