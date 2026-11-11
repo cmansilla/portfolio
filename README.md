@@ -30,18 +30,14 @@ Este repositorio aloja el código fuente del **Portafolio de Ingeniería y Demos
 
 ---
 
-## 🚀 Cómo ejecutarlo localmente
+## 🚀 Proyectos de Ingeniería y Repositorios Centrales
 
-Al ser una aplicación web estática de alto rendimiento, no requiere instalación de `node_modules` ni compiladores:
-
-```bash
-# Opción 1: Abrir directamente con tu navegador
-google-chrome index.html
-
-# Opción 2: Levantar un servidor local ligero con Python
-python3 -m http.server 8080
-# Navegar a: http://localhost:8080
-```
+| Proyecto | Especialidad | Stack Tecnológico | Repositorio / Estado |
+| :--- | :--- | :--- | :--- |
+| **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [`audit-cpe-app`](https://github.com/mmansillaf/audit-cpe-app) · `v2.1.0` |
+| **Saleman Resoluciones** | Búsqueda jurisprudencial P99 < 0.42ms | Rust (Tantivy), FastAPI, SQLite WAL | [`saleman_resoluciones`](https://github.com/mmansillaf/saleman_resoluciones) |
+| **InmobiliariaData** | Pipeline analítico geoespacial | DuckDB, Polars, PyArrow | [`inmobiliaria-data`](https://github.com/mmansillaf/inmobiliaria-data) · 25k rows |
+| **SUNAT Expert AI** | Modelo de dominio y SFT | ChatML (53.7k diálogos), DuckDB Grafo | *Validación SFT / ThinkPad P53* |
 
 ---
 
