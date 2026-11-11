@@ -11,7 +11,7 @@
 
 ## 📌 ¿Qué contiene este repositorio?
 
-Este repositorio aloja el código fuente del **Showcase y Portafolio Técnico de Christian Mansilla (AI-Augmented Systems Integration Engineer)**, diseñado con una estética *Dark-Mode* de alto impacto (estilo Linear/Vercel) e implementado en HTML5 semántico y Tailwind CSS sin dependencias pesadas de frameworks.
+Este repositorio aloja el código fuente del **Portafolio de Ingeniería y Demostración Técnica de Christian Mansilla (GenAI & LLMOps Engineer)**, enfocado en **inferencia distribuida de baja latencia (Google Gemini con streaming SSE nativo, Groq), arquitecturas de recuperación híbrida (índices invertidos en Rust sub-1ms, LanceDB, SQLite WAL) y post-entrenamiento supervisado (SFT) de modelos de lenguaje** para entornos de producción de misión crítica.
 
 ### Componentes Clave:
 
