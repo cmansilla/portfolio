@@ -95,6 +95,10 @@
       </div>
       <nav class="flex items-center space-x-6 text-xs font-medium text-slate-400">
         <a href="#proyectos" class="hover:text-slate-100 transition-colors">Proyectos</a>
+        <a href="rag-showcase.html" class="text-emerald-400 font-semibold hover:text-emerald-300 transition-colors flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          RAG Showcase
+        </a>
         <a href="#simulador" class="hover:text-slate-100 transition-colors">Simulador Tantivy</a>
         <a href="#topologia" class="hover:text-slate-100 transition-colors">Topología</a>
         <a href="https://github.com/cmansilla/portfolio" target="_blank" rel="noreferrer" class="flex items-center gap-1 px-2.5 py-1 rounded-md border border-slate-800 bg-slate-900/80 hover:bg-slate-800 hover:text-white transition-all text-slate-300 font-mono">
@@ -192,7 +196,11 @@
           <h2 class="text-3xl font-extrabold text-white tracking-tight">Proyectos Auditados en Producción</h2>
         </div>
         <div class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-lg border border-slate-800 text-xs font-mono text-slate-400">
-          <button class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Todos (6)</button>
+          <button class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Todos (9)</button>
+          <a href="rag-showcase.html" class="px-2.5 py-1 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors flex items-center gap-1">
+            <span>RAG & Grafos (3)</span>
+            <span class="text-[10px]">&rarr;</span>
+          </a>
           <button class="px-2.5 py-1 hover:text-white transition-colors">Motores</button>
           <button class="px-2.5 py-1 hover:text-white transition-colors">LLM & SFT</button>
         </div>
@@ -343,6 +351,87 @@
           <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
             <a href="https://github.com/cmansilla/portfolio/blob/main/projects/hermes-skills.md" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all">
               Ver Arquitectura &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 7: GraphRAG Jurídico Híbrido -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between border-emerald-500/20">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">GraphRAG · SQLite CTE</span>
+              <span class="badge-mono text-emerald-400">&lt;15ms Traversal</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">GraphRAG Jurídico Híbrido</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Motor de ontología jurídica peruana con extracción determinista en Python/C ($0 coste ingesta), expansión recursiva en 2 saltos y auditoría neurosimbólica de vigencia.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Recursive CTE</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Normas & Casaciones</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Zero Cost Ingest</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="rag-showcase.html#graphrag" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs font-mono text-center transition-all">
+              Ver Showcase
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/graphrag-juridico-hibrido.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Arquitectura &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 8: SUNARP Chat AI & RAG Grounder -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between border-cyan-500/20">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">pgvector · BM25 · RRF</span>
+              <span class="badge-mono text-cyan-400">Ley 31814 IA</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">SUNARP Chat AI & RAG Grounder</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Canal conversacional de orientación registral ciudadana con recuperación híbrida (pgvector HNSW + BM25), fusión RRF (k=60), citación obligatoria N1-N6 y handoff humano.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">RRF k=60</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">TUPA Registral</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">FSM Tripartita</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="rag-showcase.html#sunarp" class="flex-1 py-1.5 px-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs font-mono text-center transition-all">
+              Ver Showcase
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/sunarp-rag-grounder.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Arquitectura &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 9: Casaciones Search Engine 500k -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between border-purple-500/20">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">PaddleOCR · Parent-Child</span>
+              <span class="badge-mono text-purple-400">500k Sentencias</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Casaciones Search Engine 500k</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Motor de búsqueda procesal sobre medio millón de sentencias de la Corte Suprema. Ingesta con gating OCR (&lt;80 chars), chunking jerárquico 512/2048 y pseudonimización BPE-safe.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Gating OCR 300DPI</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Parent-Child</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Ley 29733</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="rag-showcase.html#casaciones" class="flex-1 py-1.5 px-3 rounded-lg bg-purple-600 hover:bg-purple-500 text-slate-950 font-bold text-xs font-mono text-center transition-all">
+              Ver Showcase
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/casaciones-search-engine-500k.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Arquitectura &rarr;
             </a>
           </div>
         </div>

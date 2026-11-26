@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAG & Retrieval Showcase — Christian Mansilla</title>
+  <meta name="description" content="Showcase de Arquitecturas RAG Especializadas: GraphRAG Híbrido, Inferencia Registral SUNARP y Motor de Casaciones 500k.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      background-color: #07090e;
+      color: #e2e8f0;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+    .ambient-glow {
+      position: absolute;
+      width: 750px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(56, 189, 248, 0.04) 40%, transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .grid-lines {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at 50% 20%, black 50%, transparent 90%);
+      -webkit-mask-image: radial-gradient(circle at 50% 20%, black 50%, transparent 90%);
+    }
+    .card-surface {
+      background: rgba(13, 17, 26, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-surface:hover {
+      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(16, 22, 34, 0.85);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 20px -3px rgba(16, 185, 129, 0.12);
+    }
+    .badge-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: -0.01em;
+    }
+    pre code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen selection:bg-brand-500 selection:text-black">
+
+  <div class="ambient-glow top-0 left-1/2 -translate-x-1/2"></div>
+  <div class="fixed inset-0 grid-lines pointer-events-none z-0"></div>
+
+  <!-- Header & Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#07090e]/85 border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-mono font-bold text-emerald-400 group-hover:bg-emerald-500/20 transition-all">
+            CM
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">Christian Mansilla</div>
+            <div class="text-[10px] font-mono text-slate-400">RAG & Retrieval Architecture Showcase</div>
+          </div>
+        </a>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-mono">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/60 text-slate-300 hover:text-white transition-all">
+          &larr; Volver al Portafolio
+        </a>
+        <a href="https://github.com/cmansilla/portfolio" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold transition-all">
+          GitHub Repo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
+        <span>●</span> ARQUITECTURA DE RECUPERACIÓN AVANZADA
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+        Sistemas RAG Jurídicos & Motores de Recuperación
+      </h1>
+      <p class="text-base text-slate-400 max-w-3xl leading-relaxed">
+        Presentación técnica de tres arquitecturas de producción diseñadas para eliminar la alucinación, reducir los costos computacionales a cero en ingesta estructurada y procesar acervos normativos de hasta 500,000 resoluciones.
+      </p>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
+      <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+        <div class="text-xs font-mono text-slate-400 mb-1">Volumen Máximo</div>
+        <div class="text-2xl font-bold font-mono text-white">500,000</div>
+        <div class="text-[10px] text-emerald-400 font-mono mt-1">Sentencias Judiciales</div>
+      </div>
+      <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+        <div class="text-xs font-mono text-slate-400 mb-1">Expansión Grafo CTE</div>
+        <div class="text-2xl font-bold font-mono text-emerald-400">&lt; 15 ms</div>
+        <div class="text-[10px] text-slate-400 font-mono mt-1">2-Hops Recursive SQLite</div>
+      </div>
+      <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+        <div class="text-xs font-mono text-slate-400 mb-1">Fusión de Rangos</div>
+        <div class="text-2xl font-bold font-mono text-cyan-400">RRF (k=60)</div>
+        <div class="text-[10px] text-slate-400 font-mono mt-1">Dense + Sparse HNSW</div>
+      </div>
+      <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+        <div class="text-xs font-mono text-slate-400 mb-1">Costo Ingesta Grafo</div>
+        <div class="text-2xl font-bold font-mono text-emerald-400">$0.00 USD</div>
+        <div class="text-[10px] text-slate-400 font-mono mt-1">Parsers Deterministas C/Regex</div>
+      </div>
+    </div>
+
+    <!-- Tabbed Project Explorer -->
+    <div class="space-y-16">
+
+      <!-- PROJECT 1: GraphRAG Jurídico Híbrido -->
+      <section id="graphrag" class="p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-950/60 relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800/80">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="badge-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">SQLite WAL · CTE Recursivo</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Latencia &lt;15ms</span>
+            </div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">1. GraphRAG Jurídico Híbrido</h2>
+            <p class="text-xs text-slate-400 mt-1">Extracción determinista en Python/C + Enriquecimiento selectivo para el ordenamiento legal peruano.</p>
+          </div>
+          <a href="https://github.com/cmansilla/portfolio/blob/main/projects/graphrag-juridico-hibrido.md" target="_blank" class="self-start sm:self-auto px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs font-mono transition-all">
+            Ficha Técnica Completa &rarr;
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-emerald-400">Topología de Expansión (2-Hops)</h3>
+            <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 font-mono text-[11px] text-slate-300 leading-relaxed mb-6 overflow-x-auto">
+┌────────────────────────────────────────────────────────┐
+│               Consulta Jurídica Compleja               │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│       Búsqueda Semilla Híbrida (FTS5 + Vectores)       │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│     Graph Traversal Recursivo CTE (2-Hops &lt; 15ms)      │
+│  ┌─────────────────────────┬────────────────────────┐  │
+│  │ 1-Hop: Reglamentaciones │ 2-Hops: Casaciones/Res │  │
+│  └────────────┬────────────┴───────────┬────────────┘  │
+└───────────────┼────────────────────────┼───────────────┘
+                │                        │
+                └───────────┬────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│        LLM Consultivo con Citas Verbatim Inmutables    │
+└────────────────────────────────────────────────────────┘
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <p><strong class="text-white">Cero Costo en Ingesta:</strong> Reemplaza el enfoque de Microsoft GraphRAG (que requiere cientos de millones de tokens para extraer entidades difusas) por autómatas deterministas que identifican el 100% de citas explícitas en menos de 4 minutos.</p>
+              <p><strong class="text-white">Invariante de Vigencia:</strong> Todo nodo traversal arrastra su estado temporal (`VIGENTE`, `MODIFICADO`, `DEROGADO_TACITO`), impidiendo que el LLM cite jurisprudencia o normas derogadas.</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-cyan-400">Fragmento de Código Nuclear (Traversal CTE)</h3>
+            <div class="rounded-xl border border-slate-800 bg-[#0d1117] p-4 overflow-x-auto mb-6">
+              <pre><code class="text-slate-300"><span class="text-slate-500"># graph_traversal.py — Expansión en 2 saltos mediante SQLite CTE</span>
+<span class="text-emerald-400">def</span> <span class="text-cyan-400">traverse_legal_subgraph</span>(cursor, seed_node: <span class="text-amber-400">str</span>, max_depth: <span class="text-amber-400">int</span> = <span class="text-purple-400">2</span>):
+    query = <span class="text-emerald-300">"""
+    WITH RECURSIVE legal_traversal(source, target, relation, depth, path) AS (
+        SELECT source_node, target_node, relation_type, 1, 
+               source_node || '->' || target_node
+        FROM graph_edges WHERE source_node = :seed
+        UNION ALL
+        SELECT e.source_node, e.target_node, e.relation_type, t.depth + 1,
+               t.path || '->' || e.target_node
+        FROM graph_edges e
+        JOIN legal_traversal t ON e.source_node = t.target
+        WHERE t.depth &lt; :max_depth AND instr(t.path, e.target_node) = 0
+    )
+    SELECT t.source, t.target, t.relation, t.depth, n.title, n.vigencia_status
+    FROM legal_traversal t
+    JOIN graph_nodes n ON t.target = n.node_id
+    ORDER BY t.depth ASC, n.vigencia_status ASC;
+    """</span>
+    <span class="text-emerald-400">return</span> cursor.execute(query, {<span class="text-emerald-300">"seed"</span>: seed_node, <span class="text-emerald-300">"max_depth"</span>: max_depth}).fetchall()</code></pre>
+            </div>
+
+            <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+              <div class="text-xs font-mono font-bold text-amber-400 mb-2">🚧 QUÉ FALTA / ROADMAP PENDIENTE</div>
+              <ul class="text-xs space-y-1.5 text-slate-300 font-mono">
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Ingesta de 90,000 sentencias del Tribunal Fiscal (en cola).</li>
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Autómata de detección de derogación tácita cronológica.</li>
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Renderizador 3D interactivo en WebGL para visualización de grafos.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECT 2: SUNARP Chat AI & RAG Grounder -->
+      <section id="sunarp" class="p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-950/60 relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800/80">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="badge-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">pgvector HNSW · BM25 · RRF</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Ley 31814 IA</span>
+            </div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">2. SUNARP Chat AI & RAG Grounder</h2>
+            <p class="text-xs text-slate-400 mt-1">Canal de orientación registral ciudadana con anclaje normativo obligatorio y escalamiento humano.</p>
+          </div>
+          <a href="https://github.com/cmansilla/portfolio/blob/main/projects/sunarp-rag-grounder.md" target="_blank" class="self-start sm:self-auto px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs font-mono transition-all">
+            Ficha Técnica Completa &rarr;
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-emerald-400">Topología de Inferencia Registral</h3>
+            <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 font-mono text-[11px] text-slate-300 leading-relaxed mb-6 overflow-x-auto">
+┌────────────────────────────────────────────────────────┐
+│        Mensaje Ciudadano (WhatsApp Cloud API v22)      │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│     Verificación HMAC-SHA256 & Deduplicación Redis     │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│             Recuperación Híbrida Paralela              │
+│       ┌──────────────────────┬───────────────────┐     │
+│       │ pgvector HNSW (Dense)│ BM25 tsvector     │     │
+│       └──────────┬───────────┴─────────┬─────────┘     │
+└──────────────────┼─────────────────────┼───────────────┘
+                   │                     │
+                   └──────────┬──────────┘
+                              │
+                              ▼
+┌────────────────────────────────────────────────────────┐
+│      Fusión RRF (k=60) + Cross-Encoder Reranker        │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│       Filtro de Grounding y Umbral de Confianza        │
+└─────────────┬────────────────────────────┬─────────────┘
+              │ Confianza ≥ 0.75           │ Confianza &lt; 0.75
+              ▼                            ▼
+┌───────────────────────────┐┌───────────────────────────┐
+│ Cita Obligatoria N1-N6    ││ Desvío Inmediato a        │
+│ (Leyes, TUPA, Directivas) ││ Orientador Humano SUNARP  │
+└───────────────────────────┘└───────────────────────────┘
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <p><strong class="text-white">Ponderación Registral N1-N6:</strong> El recuperador prioriza fuentes según la jerarquía normativa peruana (desde la Ley 26366 hasta los precedentes del Tribunal Registral).</p>
+              <p><strong class="text-white">Circuit Breaker de Confianza:</strong> Si la similitud combinada es inferior a 0.75 o el texto generado carece de citas de artículos válidos, se transfiere la sesión a un operador humano sin responder falsedades.</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-cyan-400">Fragmento de Código Nuclear (Fusión RRF)</h3>
+            <div class="rounded-xl border border-slate-800 bg-[#0d1117] p-4 overflow-x-auto mb-6">
+              <pre><code class="text-slate-300"><span class="text-slate-500"># hybrid_retriever.py — Reciprocal Rank Fusion determinista</span>
+<span class="text-emerald-400">def</span> <span class="text-cyan-400">reciprocal_rank_fusion</span>(dense_ids: <span class="text-amber-400">list</span>[<span class="text-amber-400">str</span>], sparse_ids: <span class="text-amber-400">list</span>[<span class="text-amber-400">str</span>], k: <span class="text-amber-400">int</span> = <span class="text-purple-400">60</span>):
+    scores: <span class="text-amber-400">dict</span>[<span class="text-amber-400">str</span>, <span class="text-amber-400">float</span>] = {}
+    
+    <span class="text-emerald-400">for</span> rank, doc_id <span class="text-emerald-400">in</span> <span class="text-cyan-400">enumerate</span>(dense_ids, start=<span class="text-purple-400">1</span>):
+        scores[doc_id] = scores.get(doc_id, <span class="text-purple-400">0.0</span>) + (<span class="text-purple-400">1.0</span> / (k + rank))
+        
+    <span class="text-emerald-400">for</span> rank, doc_id <span class="text-emerald-400">in</span> <span class="text-cyan-400">enumerate</span>(sparse_ids, start=<span class="text-purple-400">1</span>):
+        scores[doc_id] = scores.get(doc_id, <span class="text-purple-400">0.0</span>) + (<span class="text-purple-400">1.0</span> / (k + rank))
+        
+    <span class="text-emerald-400">return</span> <span class="text-cyan-400">sorted</span>(scores.items(), key=<span class="text-emerald-400">lambda</span> x: x[<span class="text-purple-400">1</span>], reverse=<span class="text-purple-400">True</span>)</code></pre>
+            </div>
+
+            <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+              <div class="text-xs font-mono font-bold text-amber-400 mb-2">🚧 QUÉ FALTA / ROADMAP PENDIENTE</div>
+              <ul class="text-xs space-y-1.5 text-slate-300 font-mono">
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Integración de webhook Meta con token permanente en Secret Manager.</li>
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Clúster de Redis Sentinel para deduplicación masiva en producción.</li>
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Conector mTLS para transacciones de consulta Síguelo Plus.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECT 3: Casaciones Search Engine 500k -->
+      <section id="casaciones" class="p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-950/60 relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800/80">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="badge-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">Parent-Child · PaddleOCR · 500k Docs</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Escala Suprema</span>
+            </div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">3. Casaciones Search Engine 500k</h2>
+            <p class="text-xs text-slate-400 mt-1">Motor de búsqueda jurisprudencial a gran escala con gating OCR y chunking jerárquico.</p>
+          </div>
+          <a href="https://github.com/cmansilla/portfolio/blob/main/projects/casaciones-search-engine-500k.md" target="_blank" class="self-start sm:self-auto px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs font-mono transition-all">
+            Ficha Técnica Completa &rarr;
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-emerald-400">Topología de Ingesta Masiva & Gating OCR</h3>
+            <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 font-mono text-[11px] text-slate-300 leading-relaxed mb-6 overflow-x-auto">
+┌────────────────────────────────────────────────────────┐
+│        Corpus Judicial Masivo (500,000 PDFs)           │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│          Gating OCR (&lt; 80 caracteres/página)           │
+│   ┌───────────────────────────┬────────────────────┐   │
+│   │ PaddleOCR 300 DPI (Scans) │ PyMuPDF (Nativo)   │   │
+│   └─────────────┬─────────────┴──────────┬─────────┘   │
+└─────────────────┼────────────────────────┼─────────────┘
+                  │                        │
+                  └───────────┬────────────┘
+                              │
+                              ▼
+┌────────────────────────────────────────────────────────┐
+│                 Parent-Child Chunking                  │
+│       • Child: 512 tokens para búsqueda ANN            │
+│       • Parent: Considerando completo para LLM         │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│      Frontend Judicial Multi-Modal (Exacto / Concepto) │
+└────────────────────────────────────────────────────────┘
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <p><strong class="text-white">Gating OCR Condicional:</strong> Evita ejecutar OCR en sentencias con texto digital seleccionable; solo invoca PaddleOCR a 300 DPI cuando la densidad de caracteres es menor a 80 por página, ahorrando más de 120 horas de GPU.</p>
+              <p><strong class="text-white">Pseudonimización BPE-Safe:</strong> Prohíbe reemplazar nombres por asteriscos o `[REDACTED]` (lo que distorsiona la distancia euclidiana y coseno); utiliza tokens sintácticos consistentes conformes con la Ley 29733.</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-cyan-400">Fragmento de Código Nuclear (Parent-Child)</h3>
+            <div class="rounded-xl border border-slate-800 bg-[#0d1117] p-4 overflow-x-auto mb-6">
+              <pre><code class="text-slate-300"><span class="text-slate-500"># chunker_pseudonymizer.py — Fragmentación jerárquica BPE-safe</span>
+<span class="text-emerald-400">def</span> <span class="text-cyan-400">parent_child_chunk</span>(considerando_text: <span class="text-amber-400">str</span>, child_size: <span class="text-amber-400">int</span> = <span class="text-purple-400">512</span>):
+    <span class="text-slate-500"># 1. Pseudonimización que no deforma tokenización</span>
+    sanitized = re.sub(<span class="text-emerald-300">r"\b\d{8}\b"</span>, <span class="text-emerald-300">"DOCUMENTO_IDENTIDAD_ANON"</span>, considerando_text)
+    words = sanitized.split()
+    chunks = []
+    
+    <span class="text-emerald-400">for</span> i <span class="text-emerald-400">in</span> <span class="text-cyan-400">range</span>(<span class="text-purple-400">0</span>, <span class="text-cyan-400">len</span>(words), child_size - <span class="text-purple-400">64</span>):
+        child = <span class="text-emerald-300">" "</span>.join(words[i : i + child_size])
+        chunks.append({
+            <span class="text-emerald-300">"child_vector_text"</span>: child,
+            <span class="text-emerald-300">"parent_full_text"</span>: considerando_text
+        })
+    <span class="text-emerald-400">return</span> chunks</code></pre>
+            </div>
+
+            <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+              <div class="text-xs font-mono font-bold text-amber-400 mb-2">🚧 QUÉ FALTA / ROADMAP PENDIENTE</div>
+              <ul class="text-xs space-y-1.5 text-slate-300 font-mono">
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> OCR neuronal del 25% de sentencias escaneadas legacy (1995-2010).</li>
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Particionado a almacenamiento NVMe dedicado de 120 GB con Zstd.</li>
+                <li class="flex items-center gap-2"><span class="text-amber-400">☐</span> Conector de validación contra los 12 Plenos Casatorios Civiles.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Bottom Return Banner -->
+    <div class="mt-16 text-center py-8 border-t border-slate-800/70">
+      <p class="text-sm text-slate-400 mb-4 font-mono">Todas las especificaciones y contratos de interfaz están disponibles en el repositorio.</p>
+      <div class="flex items-center justify-center gap-4">
+        <a href="index.html" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-900 hover:bg-slate-800 text-white font-mono text-xs font-bold transition-all">
+          &larr; Volver a la Portada Principal
+        </a>
+        <a href="https://github.com/cmansilla/portfolio" target="_blank" class="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-mono text-xs font-bold transition-all">
+          Explorar en GitHub
+        </a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
