@@ -1,6 +1,10 @@
 # Audit CPE Engine (v2.1.0) — Arquitectura de Misión Crítica
 
-Motor de auditoría tributaria determinista, clasificación económica y triaje de Comprobantes de Pago Electrónicos (CPE / XML / PDF) para el sistema fiscal peruano (SUNAT).
+> Motor de auditoría tributaria determinista, clasificación económica y triaje de Comprobantes de Pago Electrónicos (CPE / XML / PDF) para el sistema fiscal peruano (SUNAT).
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-cmansilla%2Faudit--cpe--app-181717?logo=github)](https://github.com/cmansilla/audit-cpe-app)
+[![Go: Pure](https://img.shields.io/badge/Runtime-Go%201.23%20Pure-00ADD8.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 

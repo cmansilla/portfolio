@@ -42,17 +42,17 @@
 
 | # | Proyecto | Especialidad | Stack Tecnológico | Especificación & Arquitectura |
 |---|:---|:---|:---|:---|
-| 1 | **GraphRAG Jurídico Híbrido** | RAG sobre grafos & SQLite CTE | SQLite WAL, CTEs <15ms, Parsers C/Regex | [`projects/graphrag-juridico-hibrido.md`](projects/graphrag-juridico-hibrido.md) |
+| 1 | **GraphRAG Jurídico Híbrido** | RAG sobre grafos & SQLite CTE | SQLite WAL, CTEs <15ms, Parsers C/Regex | [`projects/graphrag-juridico-hibrido.md`](projects/graphrag-juridico-hibrido.md) · [Repo](https://github.com/cmansilla/legal-graph-rag) |
 | 2 | **Algoritmo Jurídico v4** | Motor tri-políglota P99 < 0.42ms | Rust (Tantivy), Go (MCP), Python | [`projects/algoritmo-juridico-v4.md`](projects/algoritmo-juridico-v4.md) · [Repo](https://github.com/cmansilla/algoritmojuridico-v4) |
+| 3 | **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [`projects/audit-cpe-app.md`](projects/audit-cpe-app.md) · [Repo](https://github.com/cmansilla/audit-cpe-app) |
+| 4 | **LexProof Forensic** | Cadena de custodia digital | ISO 27037/27042, CAF v3.0, FRE 902 | [`projects/lexproof-forensic-engine.md`](projects/lexproof-forensic-engine.md) · [Repo](https://github.com/cmansilla/lexproof-forensic-engine) |
 | 5 | **SUNARP Chat AI & Grounder** | RAG híbrido y canal ciudadano | pgvector HNSW, BM25, RRF (k=60), Meta API | [`projects/sunarp-rag-grounder.md`](projects/sunarp-rag-grounder.md) |
 | 6 | **Casaciones Search Engine 500k** | Búsqueda procesal masiva | 500k PDFs, Gating OCR 300DPI, Parent-Child | [`projects/casaciones-search-engine-500k.md`](projects/casaciones-search-engine-500k.md) |
-| 7 | **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [`projects/audit-cpe-app.md`](projects/audit-cpe-app.md) |
-| 8 | **Saleman Resoluciones** | Búsqueda jurisprudencial P99 < 0.42ms | Rust (Tantivy), FastAPI, SQLite WAL | [`projects/saleman-resoluciones.md`](projects/saleman-resoluciones.md) |
-| 9 | **InmobiliariaData** | Pipeline analítico geoespacial | DuckDB, Polars, PyArrow | [`projects/inmobiliaria-data.md`](projects/inmobiliaria-data.md) |
-| 10 | **SUNAT Expert AI** | Modelo de dominio y SFT | ChatML (53.7k diálogos), DuckDB Grafo | [`projects/sunat-expert-ai.md`](projects/sunat-expert-ai.md) |
-| 11 | **LocalSearchEngine V2** | Búsqueda vectorial offline | LanceDB, Apache Arrow, Svelte | [`projects/local-search-engine.md`](projects/local-search-engine.md) |
-| 12 | **LexProof Forensic** | Cadena de custodia digital | ISO 27037/27042, CAF v3.0, FRE 902 | [`projects/lexproof-forensic-engine.md`](projects/lexproof-forensic-engine.md) |
-| 13 | **Hermes Skills** | Orquestación multi-agente | MCP Protocol, Git Worktrees | [`projects/hermes-skills.md`](projects/hermes-skills.md) · 118+ Skills |
+| 7 | **Saleman Resoluciones** | Búsqueda jurisprudencial P99 < 0.42ms | Rust (Tantivy), FastAPI, SQLite WAL | [`projects/saleman-resoluciones.md`](projects/saleman-resoluciones.md) |
+| 8 | **InmobiliariaData** | Pipeline analítico geoespacial | DuckDB, Polars, PyArrow | [`projects/inmobiliaria-data.md`](projects/inmobiliaria-data.md) |
+| 9 | **SUNAT Expert AI** | Modelo de dominio y SFT | ChatML (53.7k diálogos), DuckDB Grafo | [`projects/sunat-expert-ai.md`](projects/sunat-expert-ai.md) |
+| 10 | **LocalSearchEngine V2** | Búsqueda vectorial offline | LanceDB, Apache Arrow, Svelte | [`projects/local-search-engine.md`](projects/local-search-engine.md) |
+| 11 | **Hermes Skills** | Orquestación multi-agente | MCP Protocol, Git Worktrees | [`projects/hermes-skills.md`](projects/hermes-skills.md) · 118+ Skills |
 
 ---
 

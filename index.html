@@ -196,7 +196,7 @@
           <h2 class="text-3xl font-extrabold text-white tracking-tight">Proyectos Auditados en Producción</h2>
         </div>
         <div class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-lg border border-slate-800 text-xs font-mono text-slate-400">
-          <button class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Todos (10)</button>
+          <button class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Todos (11)</button>
           <a href="rag-showcase.html" class="px-2.5 py-1 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors flex items-center gap-1">
             <span>RAG & Grafos (3)</span>
             <span class="text-[10px]">&rarr;</span>
@@ -277,8 +277,12 @@
             </div>
           </div>
           <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
-            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/lexproof-forensic-engine.md" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all">
-              Ver Arquitectura &rarr;
+            <a href="https://github.com/cmansilla/lexproof-forensic-engine" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all flex items-center justify-center gap-1">
+              <span>GitHub</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/lexproof-forensic-engine.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Arquitectura &rarr;
             </a>
           </div>
         </div>
@@ -373,11 +377,15 @@
             </div>
           </div>
           <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/cmansilla/legal-graph-rag" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all flex items-center justify-center gap-1">
+              <span>GitHub</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
             <a href="rag-showcase.html#graphrag" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs font-mono text-center transition-all">
-              Ver Showcase
+              Showcase
             </a>
             <a href="https://github.com/cmansilla/portfolio/blob/main/projects/graphrag-juridico-hibrido.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
-              Arquitectura &rarr;
+              Ficha &rarr;
             </a>
           </div>
         </div>
@@ -459,6 +467,34 @@
               <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             </a>
             <a href="https://github.com/cmansilla/portfolio/blob/main/projects/algoritmo-juridico-v4.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Ficha &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 11: Audit CPE Engine -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Go 1.23 · SingleFlight</span>
+              <span class="badge-mono text-slate-400">XML UBL 2.1</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400">Audit CPE Engine</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Motor determinista de auditoría tributaria y triaje de Comprobantes de Pago Electrónicos (XML/PDF) para SUNAT. Concurrencia con sync.RWMutex, SingleFlight y UI embebida (binario ~12MB).
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Pure Go</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">SUNAT Cache</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Cross-Platform</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/cmansilla/audit-cpe-app" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all flex items-center justify-center gap-1">
+              <span>GitHub</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/audit-cpe-app.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
               Ficha &rarr;
             </a>
           </div>

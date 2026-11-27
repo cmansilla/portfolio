@@ -1,6 +1,10 @@
 # GraphRAG Jurídico Híbrido — Arquitectura de Grafo y Recuperación Jerárquica
 
-Motor de recuperación aumentada por grafos de conocimiento estructurado (GraphRAG) especializado en el ordenamiento jurídico peruano. Integra extracción determinista con enriquecimiento semántico selectivo y traversals recursivos sobre normas, precedentes y fallos administrativos.
+> Motor de recuperación aumentada por grafos de conocimiento estructurado (GraphRAG) especializado en el ordenamiento jurídico peruano. Integra extracción determinista con enriquecimiento semántico selectivo y traversals recursivos sobre normas, precedentes y fallos administrativos.
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-cmansilla%2Flegal--graph--rag-181717?logo=github)](https://github.com/cmansilla/legal-graph-rag)
+[![Graph Traversal: SQLite CTE](https://img.shields.io/badge/Traversal-SQLite%20Recursive%20CTE%20%3C15ms-emerald.svg)]()
+[![Multi-Agent: Critic & Strategist](https://img.shields.io/badge/Multi--Agent-Router%20%7C%20Critic%20%7C%20Strategist-purple.svg)]()
 
 ---
 

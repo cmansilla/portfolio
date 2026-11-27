@@ -1,6 +1,11 @@
 # LexProof Forensic Engine — Arquitectura Pericial Digital
 
-Motor de análisis forense digital y preservación de evidencia conforme a estándares internacionales **ISO/IEC 27037** (cadena de custodia) e **ISO/IEC 27042** (análisis e interpretación pericial).
+> Motor de análisis forense digital y preservación de evidencia conforme a estándares internacionales **ISO/IEC 27037** (cadena de custodia) e **ISO/IEC 27042** (análisis e interpretación pericial).
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-cmansilla%2Flexproof--forensic--engine-181717?logo=github)](https://github.com/cmansilla/lexproof-forensic-engine)
+[![Standard: ISO 27037](https://img.shields.io/badge/Standard-ISO%2FIEC%2027037%2F27042-blue.svg)]()
+[![Legal: FRE 902(14)](https://img.shields.io/badge/Admissibility-FRE%20Rule%20902(14)-green.svg)]()
+[![Python: 3.11+](https://img.shields.io/badge/Python-3.11+-yellow.svg)]()
 
 ---
 

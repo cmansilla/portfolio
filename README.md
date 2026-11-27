@@ -42,16 +42,16 @@ Este repositorio aloja el código fuente del **Portafolio de Ingeniería y Demos
 
 | Proyecto | Especialidad | Stack Tecnológico | Especificación & Arquitectura |
 | :--- | :--- | :--- | :--- |
-| **GraphRAG Jurídico Híbrido** | RAG sobre grafos & SQLite CTE | SQLite WAL, CTEs <15ms, Parsers C/Regex | [Ver Arquitectura GraphRAG](projects/graphrag-juridico-hibrido.md) · [Ver Showcase](https://cmansilla.github.io/portfolio/rag-showcase.html#graphrag) |
+| **GraphRAG Jurídico Híbrido** | RAG sobre grafos & SQLite CTE | SQLite WAL, CTEs <15ms, Parsers C/Regex | [Ver Arquitectura](projects/graphrag-juridico-hibrido.md) · [GitHub Repo](https://github.com/cmansilla/legal-graph-rag) · [Showcase](https://cmansilla.github.io/portfolio/rag-showcase.html#graphrag) |
 | **Algoritmo Jurídico v4** | Motor tri-políglota P99 < 0.42ms | Rust (Tantivy), Go (MCP), Python | [Ver Ficha Técnica](projects/algoritmo-juridico-v4.md) · [GitHub Repo](https://github.com/cmansilla/algoritmojuridico-v4) |
+| **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [Ver Ficha Técnica](projects/audit-cpe-app.md) · [GitHub Repo](https://github.com/cmansilla/audit-cpe-app) |
+| **LexProof Forensic** | Cadena de custodia digital | ISO 27037/27042, CAF v3.0, FRE 902 | [Ver Ficha Técnica](projects/lexproof-forensic-engine.md) · [GitHub Repo](https://github.com/cmansilla/lexproof-forensic-engine) |
 | **SUNARP Chat AI & Grounder** | RAG híbrido y canal ciudadano | pgvector HNSW, BM25, RRF (k=60), Meta API | [Ver Arquitectura SUNARP RAG](projects/sunarp-rag-grounder.md) · [Ver Showcase](https://cmansilla.github.io/portfolio/rag-showcase.html#sunarp) |
 | **Casaciones Search Engine 500k** | Búsqueda procesal a gran escala | 500k PDFs, Gating OCR 300DPI, Parent-Child | [Ver Arquitectura 500k](projects/casaciones-search-engine-500k.md) · [Ver Showcase](https://cmansilla.github.io/portfolio/rag-showcase.html#casaciones) |
-| **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [Ver Arquitectura Go (`v2.1.0`)](projects/audit-cpe-app.md) |
 | **Saleman Resoluciones** | Búsqueda jurisprudencial P99 < 0.42ms | Rust (Tantivy), FastAPI, SQLite WAL | [Ver Arquitectura Rust/FastAPI](projects/saleman-resoluciones.md) |
 | **InmobiliariaData** | Pipeline analítico geoespacial | DuckDB, Polars, PyArrow | [Ver Arquitectura OLAP](projects/inmobiliaria-data.md) · 25k rows |
 | **SUNAT Expert AI** | Modelo de dominio y SFT | ChatML (53.7k diálogos), DuckDB Grafo | [Ver Arquitectura SFT / Grafo](projects/sunat-expert-ai.md) |
 | **LocalSearchEngine V2** | Búsqueda vectorial offline | LanceDB, Apache Arrow, Svelte | [Ver Arquitectura LanceDB](projects/local-search-engine.md) |
-| **LexProof Forensic** | Cadena de custodia digital | ISO 27037/27042, CAF v3.0, FRE 902 | [Ver Arquitectura Forense](projects/lexproof-forensic-engine.md) |
 | **Hermes Skills** | Orquestación multi-agente | MCP Protocol, Git Worktrees | [Ver Arquitectura Agéntica](projects/hermes-skills.md) · 118+ Skills |
 
 ---
