@@ -38,14 +38,12 @@
 
 ---
 
-## 2. Inventario Consolidado de Proyectos en el Portafolio (13 Proyectos)
+## 2. Inventario Consolidado de Proyectos en el Portafolio (11 Proyectos)
 
 | # | Proyecto | Especialidad | Stack Tecnológico | Especificación & Arquitectura |
 |---|:---|:---|:---|:---|
 | 1 | **GraphRAG Jurídico Híbrido** | RAG sobre grafos & SQLite CTE | SQLite WAL, CTEs <15ms, Parsers C/Regex | [`projects/graphrag-juridico-hibrido.md`](projects/graphrag-juridico-hibrido.md) |
 | 2 | **Algoritmo Jurídico v4** | Motor tri-políglota P99 < 0.42ms | Rust (Tantivy), Go (MCP), Python | [`projects/algoritmo-juridico-v4.md`](projects/algoritmo-juridico-v4.md) · [Repo](https://github.com/cmansilla/algoritmojuridico-v4) |
-| 3 | **Tribunal Fiscal Harvester** | Ingesta masiva 216k RTFs (MEF) | curl_cffi JA3, SQLite WAL, Cloud Offload | [`projects/tribunal-fiscal-harvester.md`](projects/tribunal-fiscal-harvester.md) · [Repo](https://github.com/cmansilla/tribunal-fiscal-harvester) |
-| 4 | **CEJ Judicial Scraper** | Cosecha automatizada Poder Judicial | Playwright CDP, Radware Bypass, SHA-256 | [`projects/cej-judicial-scraper.md`](projects/cej-judicial-scraper.md) · [Repo](https://github.com/cmansilla/cej-judicial-scraper) |
 | 5 | **SUNARP Chat AI & Grounder** | RAG híbrido y canal ciudadano | pgvector HNSW, BM25, RRF (k=60), Meta API | [`projects/sunarp-rag-grounder.md`](projects/sunarp-rag-grounder.md) |
 | 6 | **Casaciones Search Engine 500k** | Búsqueda procesal masiva | 500k PDFs, Gating OCR 300DPI, Parent-Child | [`projects/casaciones-search-engine-500k.md`](projects/casaciones-search-engine-500k.md) |
 | 7 | **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [`projects/audit-cpe-app.md`](projects/audit-cpe-app.md) |
