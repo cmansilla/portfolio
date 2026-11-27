@@ -2,7 +2,7 @@
 
 > Motor autónomo de cosecha de expedientes judiciales electrónicos (CEJ) con anclaje al Chrome DevTools Protocol (CDP), arquitectura Dual-Worker y neutralización de WAF Radware/Incapsula.
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-cmansilla%2Fcej--judicial--scraper-181717?logo=github)](https://github.com/cmansilla/cej-judicial-scraper)
+[![Status: Private Repository](https://img.shields.io/badge/Access-Private%20Repository%20%7C%20Authorized%20Only-red.svg)]()
 [![Protocol: CDP](https://img.shields.io/badge/Protocol-Chrome%20DevTools%20(CDP)-blue.svg)]()
 [![Defense: Radware Bypass](https://img.shields.io/badge/Bypass-Radware%20WAF-green.svg)]()
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11+-yellow.svg)]()

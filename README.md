@@ -46,8 +46,8 @@ Este repositorio aloja el código fuente del **Portafolio de Ingeniería y Demos
 | **Algoritmo Jurídico v4** | Motor tri-políglota P99 < 0.42ms | Rust (Tantivy), Go (MCP), Python | [Ver Ficha Técnica](projects/algoritmo-juridico-v4.md) · [GitHub Repo](https://github.com/cmansilla/algoritmojuridico-v4) |
 | **SUNARP Chat AI & Grounder** | RAG híbrido y canal ciudadano | pgvector HNSW, BM25, RRF (k=60), Meta API | [Ver Arquitectura SUNARP RAG](projects/sunarp-rag-grounder.md) · [Ver Showcase](https://cmansilla.github.io/portfolio/rag-showcase.html#sunarp) |
 | **Casaciones Search Engine 500k** | Búsqueda procesal a gran escala | 500k PDFs, Gating OCR 300DPI, Parent-Child | [Ver Arquitectura 500k](projects/casaciones-search-engine-500k.md) · [Ver Showcase](https://cmansilla.github.io/portfolio/rag-showcase.html#casaciones) |
-| **Tribunal Fiscal Harvester** | Ingesta masiva 216k RTFs (MEF) | curl_cffi JA3, SQLite WAL, Cloud Offload | [Ver Ficha Técnica](projects/tribunal-fiscal-harvester.md) · [GitHub Repo](https://github.com/cmansilla/tribunal-fiscal-harvester) |
-| **CEJ Judicial Scraper** | Cosecha automatizada Poder Judicial | Playwright CDP, Radware Bypass, SHA-256 | [Ver Ficha Técnica](projects/cej-judicial-scraper.md) · [GitHub Repo](https://github.com/cmansilla/cej-judicial-scraper) |
+| **Tribunal Fiscal Harvester** | Ingesta masiva 216k RTFs (MEF) | curl_cffi JA3, SQLite WAL, Cloud Offload | [Ver Ficha Técnica](projects/tribunal-fiscal-harvester.md) · *(Repo Privado)* |
+| **CEJ Judicial Scraper** | Cosecha automatizada Poder Judicial | Playwright CDP, Radware Bypass, SHA-256 | [Ver Ficha Técnica](projects/cej-judicial-scraper.md) · *(Repo Privado)* |
 | **Audit CPE Engine** | Auditoría tributaria y concurrencia | Go (Pure), SingleFlight, Mutex | [Ver Arquitectura Go (`v2.1.0`)](projects/audit-cpe-app.md) |
 | **Saleman Resoluciones** | Búsqueda jurisprudencial P99 < 0.42ms | Rust (Tantivy), FastAPI, SQLite WAL | [Ver Arquitectura Rust/FastAPI](projects/saleman-resoluciones.md) |
 | **InmobiliariaData** | Pipeline analítico geoespacial | DuckDB, Polars, PyArrow | [Ver Arquitectura OLAP](projects/inmobiliaria-data.md) · 25k rows |

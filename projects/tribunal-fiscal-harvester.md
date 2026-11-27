@@ -2,7 +2,7 @@
 
 > Motor de recolección masiva, verificación criptográfica de integridad y offload a la nube para 216,914 resoluciones del Tribunal Fiscal (MEF Perú, 2012–2026).
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-cmansilla%2Ftribunal--fiscal--harvester-181717?logo=github)](https://github.com/cmansilla/tribunal-fiscal-harvester)
+[![Status: Private Repository](https://img.shields.io/badge/Access-Private%20Repository%20%7C%20Authorized%20Only-red.svg)]()
 [![TLS Impersonation: curl_cffi](https://img.shields.io/badge/TLS-curl__cffi%20JA3-purple.svg)]()
 [![Database: SQLite WAL](https://img.shields.io/badge/Database-SQLite%20WAL%20%7C%20FTS5-blue.svg)]()
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11+-yellow.svg)]()
