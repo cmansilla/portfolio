@@ -196,7 +196,7 @@
           <h2 class="text-3xl font-extrabold text-white tracking-tight">Proyectos Auditados en Producción</h2>
         </div>
         <div class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-lg border border-slate-800 text-xs font-mono text-slate-400">
-          <button class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Todos (9)</button>
+          <button class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Todos (12)</button>
           <a href="rag-showcase.html" class="px-2.5 py-1 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors flex items-center gap-1">
             <span>RAG & Grafos (3)</span>
             <span class="text-[10px]">&rarr;</span>
@@ -432,6 +432,90 @@
             </a>
             <a href="https://github.com/cmansilla/portfolio/blob/main/projects/casaciones-search-engine-500k.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
               Arquitectura &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 10: Algoritmo Jurídico v4 -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20">Rust · Go MCP · Python</span>
+              <span class="badge-mono text-slate-400">P99 &lt; 0.42ms</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400">Algoritmo Jurídico v4</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Motor tri-políglota para jurisprudencia peruana. Go MCP Gateway (<35MB) + Core Tantivy Rust (mmap sub-1ms) y orquestación multi-agente con validación neurosimbólica de citas.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Tantivy v0.26</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Model Context Protocol</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Docker</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/cmansilla/algoritmojuridico-v4" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all flex items-center justify-center gap-1">
+              <span>GitHub</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/algoritmo-juridico-v4.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Ficha &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 11: CEJ Judicial Scraper -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Playwright CDP · Dual Worker</span>
+              <span class="badge-mono text-slate-400">99.6% Success</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400">CEJ Judicial Scraper</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Cosecha automatizada de expedientes del Poder Judicial con bypass heurístico de WAF Radware/Incapsula sobre Chrome DevTools Protocol, dual workers y verificación criptográfica SHA-256.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Chrome CDP</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Radware Bypass</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">SQLite Checkpoints</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/cmansilla/cej-judicial-scraper" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all flex items-center justify-center gap-1">
+              <span>GitHub</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/cej-judicial-scraper.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Ficha &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 12: Tribunal Fiscal Harvester -->
+        <div class="card-surface rounded-xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">curl_cffi JA3 · SQLite WAL</span>
+              <span class="badge-mono text-slate-400">216k RTFs (99.3%)</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400">Tribunal Fiscal Harvester</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Pipeline asíncrono en dos etapas para 216,914 resoluciones tributarias del MEF (2012–2026). Impersonación TLS, gating de cabecera binaria %PDF- y streaming continuo de offload a la nube.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">curl_cffi</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">SQLite FTS5</span>
+              <span class="badge-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Cloud Offload</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-slate-800/70">
+            <a href="https://github.com/cmansilla/tribunal-fiscal-harvester" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-mono text-xs text-center transition-all flex items-center justify-center gap-1">
+              <span>GitHub</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="https://github.com/cmansilla/portfolio/blob/main/projects/tribunal-fiscal-harvester.md" target="_blank" class="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-mono">
+              Ficha &rarr;
             </a>
           </div>
         </div>
